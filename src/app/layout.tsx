@@ -67,10 +67,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Google AdSense — replace ca-pub-XXX with your real publisher ID */}
+        <meta name="google-adsense-account" content="ca-pub-5473625991326486" />
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5473625991326486"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
