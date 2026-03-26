@@ -152,6 +152,16 @@ export const tools: Tool[] = [
     keywords: ["password generator", "random password", "strong password", "secure password generator"],
   },
   {
+    slug: "seo-analyzer",
+    name: "SEO Analyzer",
+    description: "Check any website's SEO score with 16+ on-page checks.",
+    longDescription:
+      "Free SEO analyzer tool. Enter any URL to get an instant SEO audit with 16+ checks covering meta tags, headings, images, structured data, and more.",
+    category: "developer",
+    icon: "🔍",
+    keywords: ["seo analyzer", "seo checker", "website analyzer", "seo audit"],
+  },
+  {
     slug: "url-encoder-decoder",
     name: "URL Encoder & Decoder",
     description: "Encode or decode URLs and query parameters instantly.",
