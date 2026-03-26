@@ -67,7 +67,15 @@ export default function ImageCompressorPage() {
       <p className="mb-6 text-gray-600">Compress images to reduce file size while maintaining quality. All processing happens in your browser — images are never uploaded to any server.</p>
 
       <div className="mb-6 rounded-lg bg-white p-6">
-        <input ref={inputRef} type="file" accept="image/*" onChange={handleFile} className="mb-4 w-full text-sm" />
+        <input ref={inputRef} type="file" accept="image/*" onChange={handleFile} className="hidden" id="image-upload" />
+        <label
+          htmlFor="image-upload"
+          className="mb-4 flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 px-6 py-10 transition-colors hover:border-blue-400 hover:bg-blue-50"
+        >
+          <svg className="mb-2 h-10 w-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 16v-8m0 0l-3 3m3-3l3 3M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10V8a5 5 0 0110 0v2" /></svg>
+          <span className="text-sm font-medium text-gray-700">{original ? original.name : "Click to upload an image"}</span>
+          <span className="mt-1 text-xs text-gray-400">JPEG, PNG, WebP, GIF — any size</span>
+        </label>
         <div className="mb-4">
           <label className="mb-1 block text-sm font-medium text-gray-700">Quality: {Math.round(quality * 100)}%</label>
           <input type="range" min={0.1} max={1} step={0.05} value={quality} onChange={(e) => handleQuality(+e.target.value)} className="w-full" />

@@ -3,6 +3,7 @@ import { getTranslation, getToolTranslation } from "@/lib/i18n";
 import { tools } from "@/lib/tools";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import widgets from "@/components/tools/ToolWidgetMap";
 import type { Metadata } from "next";
 
 export function generateStaticParams() {
@@ -38,35 +39,12 @@ export async function generateMetadata({
   };
 }
 
-const useToolLabels: Record<string, string> = {
-  ko: "전체 도구를 사용하려면:",
-  ja: "完全なツールを使用するには:",
-  zh: "使用完整工具：",
-  es: "Para usar la herramienta completa:",
-  pt: "Para usar a ferramenta completa:",
-  id: "Untuk menggunakan alat lengkap:",
-  de: "Zum vollständigen Tool:",
-  fr: "Pour utiliser l'outil complet :",
-};
-
-const openLabels: Record<string, string> = {
-  ko: "도구 열기",
-  ja: "ツールを開く",
-  zh: "打开工具",
-  es: "Abrir herramienta",
-  pt: "Abrir ferramenta",
-  id: "Buka alat",
-  de: "Tool öffnen",
-  fr: "Ouvrir l'outil",
-};
-
 export default async function LocaleToolPage({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale } = await params;
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const t = getTranslation(locale as Locale);
   const tt = getToolTranslation(locale as Locale, slug);
   const tool = tools.find((tl) => tl.slug === slug);
@@ -81,6 +59,18 @@ export default async function LocaleToolPage({
   }
 
   const pageUrl = `https://toolpilot.pages.dev/${locale}/tools/${slug}`;
+  const Widget = widgets[slug];
+
+  // Common button labels from translations
+  const uiLabels: Record<string, string> = {
+    copy: t.common.copyBtn,
+    generate: t.common.generateBtn,
+    convert: t.common.convertBtn,
+    analyze: t.common.analyzeBtn,
+    download: t.common.downloadBtn,
+    encode: t.common.encodeBtn,
+    decode: t.common.decodeBtn,
+  };
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
@@ -148,19 +138,17 @@ export default async function LocaleToolPage({
       <h1 className="mb-2 text-3xl font-bold">{tt.h1}</h1>
       <p className="mb-6 text-gray-600">{tt.description}</p>
 
-      {/* CTA to English full tool */}
-      <div className="mb-6 rounded-lg border border-blue-200 bg-blue-50 p-4 text-center">
-        <p className="mb-2 text-sm text-gray-700">{useToolLabels[locale] || "Use the full tool:"}</p>
-        <Link
-          href={`/tools/${slug}`}
-          className="inline-block rounded-lg bg-blue-600 px-6 py-2 text-sm font-medium text-white hover:bg-blue-700"
-        >
-          {openLabels[locale] || "Open"} →
-        </Link>
-      </div>
+      {/* Embedded tool widget */}
+      {Widget ? (
+        <Widget labels={uiLabels} />
+      ) : (
+        <div className="mb-6 rounded-lg border border-gray-200 bg-gray-50 p-8 text-center text-sm text-gray-500">
+          Tool loading...
+        </div>
+      )}
 
       {/* What Is section */}
-      <section className="rounded-lg bg-white p-6 text-sm text-gray-600">
+      <section className="mt-8 rounded-lg bg-white p-6 text-sm text-gray-600">
         <h2 className="mb-2 text-lg font-semibold text-gray-900">{tt.whatIs}</h2>
         <p>{tt.whatIsAnswer}</p>
       </section>

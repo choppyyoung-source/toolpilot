@@ -1,0 +1,147 @@
+"use client";
+
+import { useState } from "react";
+
+function diffLines(
+  a: string,
+  b: string
+): { type: "same" | "add" | "remove"; text: string }[] {
+  const linesA = a.split("\n");
+  const linesB = b.split("\n");
+  const result: { type: "same" | "add" | "remove"; text: string }[] = [];
+  const max = Math.max(linesA.length, linesB.length);
+  let ia = 0,
+    ib = 0;
+  while (ia < linesA.length || ib < linesB.length) {
+    if (
+      ia < linesA.length &&
+      ib < linesB.length &&
+      linesA[ia] === linesB[ib]
+    ) {
+      result.push({ type: "same", text: linesA[ia] });
+      ia++;
+      ib++;
+    } else if (
+      ib < linesB.length &&
+      (ia >= linesA.length || linesA.indexOf(linesB[ib], ia) === -1)
+    ) {
+      result.push({ type: "add", text: linesB[ib] });
+      ib++;
+    } else {
+      result.push({ type: "remove", text: linesA[ia] });
+      ia++;
+    }
+    if (result.length > max * 2) break;
+  }
+  return result;
+}
+
+interface DiffCheckerLabels {
+  original: string;
+  modified: string;
+  compare: string;
+  added: string;
+  removed: string;
+  unchanged: string;
+  identical: string;
+}
+
+const defaultLabels: DiffCheckerLabels = {
+  original: "Original",
+  modified: "Modified",
+  compare: "Compare",
+  added: "added",
+  removed: "removed",
+  unchanged: "unchanged",
+  identical: "No differences found \u2014 texts are identical.",
+};
+
+interface DiffCheckerWidgetProps {
+  labels?: Partial<DiffCheckerLabels>;
+}
+
+export default function DiffCheckerWidget({ labels: labelsProp }: DiffCheckerWidgetProps = {}) {
+  const labels = { ...defaultLabels, ...labelsProp };
+
+  const [left, setLeft] = useState("");
+  const [right, setRight] = useState("");
+  const [diff, setDiff] = useState<ReturnType<typeof diffLines>>([]);
+  const [compared, setCompared] = useState(false);
+
+  function compare() {
+    setDiff(diffLines(left, right));
+    setCompared(true);
+  }
+
+  const adds = diff.filter((d) => d.type === "add").length;
+  const removes = diff.filter((d) => d.type === "remove").length;
+  const same = diff.filter((d) => d.type === "same").length;
+
+  return (
+    <div>
+      {/* Text Inputs */}
+      <div className="mb-4 grid gap-4 lg:grid-cols-2">
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">{labels.original}</label>
+          <textarea
+            className="w-full rounded-lg border border-gray-300 p-3 font-mono text-sm"
+            rows={12}
+            placeholder={`${labels.original}...`}
+            value={left}
+            onChange={(e) => setLeft(e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">{labels.modified}</label>
+          <textarea
+            className="w-full rounded-lg border border-gray-300 p-3 font-mono text-sm"
+            rows={12}
+            placeholder={`${labels.modified}...`}
+            value={right}
+            onChange={(e) => setRight(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <button
+        onClick={compare}
+        className="mb-6 w-full rounded-lg bg-blue-600 py-3 text-sm font-medium text-white hover:bg-blue-700"
+      >
+        {labels.compare}
+      </button>
+
+      {/* Diff Output */}
+      {compared && (
+        <>
+          <div className="mb-4 flex gap-4 text-sm">
+            <span className="text-green-600">+{adds} {labels.added}</span>
+            <span className="text-red-600">-{removes} {labels.removed}</span>
+            <span className="text-gray-500">{same} {labels.unchanged}</span>
+          </div>
+          <div className="rounded-lg border border-gray-200 bg-white">
+            {diff.map((d, i) => (
+              <div
+                key={i}
+                className={`border-b border-gray-100 px-4 py-1 font-mono text-sm ${
+                  d.type === "add"
+                    ? "bg-green-50 text-green-800"
+                    : d.type === "remove"
+                    ? "bg-red-50 text-red-800"
+                    : "text-gray-700"
+                }`}
+              >
+                <span className="mr-3 inline-block w-4 text-center text-xs">
+                  {d.type === "add" ? "+" : d.type === "remove" ? "-" : " "}
+                </span>
+                {d.text || " "}
+              </div>
+            ))}
+            {diff.length === 0 && (
+              <div className="p-8 text-center text-sm text-gray-400">{labels.identical}</div>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}

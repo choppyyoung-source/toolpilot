@@ -50,7 +50,7 @@ export default function BmiCalculatorPage() {
           <button onClick={() => setUnit("metric")} className={`flex-1 rounded-lg py-2 text-sm font-medium ${unit === "metric" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700"}`}>Metric (kg/cm)</button>
           <button onClick={() => setUnit("imperial")} className={`flex-1 rounded-lg py-2 text-sm font-medium ${unit === "imperial" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700"}`}>Imperial (lb/ft)</button>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="space-y-4">
           {unit === "metric" ? (
             <div>
               <label className="mb-1 block text-sm font-medium text-gray-700">Height (cm)</label>
@@ -60,9 +60,9 @@ export default function BmiCalculatorPage() {
             <div>
               <label className="mb-1 block text-sm font-medium text-gray-700">Height</label>
               <div className="flex gap-2">
-                <input type="number" placeholder="5" value={heightFt} onChange={(e) => setHeightFt(e.target.value)} className="flex-1 rounded border border-gray-300 px-3 py-3 text-sm" />
+                <input type="number" placeholder="5" value={heightFt} onChange={(e) => setHeightFt(e.target.value)} className="w-20 rounded border border-gray-300 px-3 py-3 text-sm" />
                 <span className="flex items-center text-sm text-gray-500">ft</span>
-                <input type="number" placeholder="10" value={heightIn} onChange={(e) => setHeightIn(e.target.value)} className="flex-1 rounded border border-gray-300 px-3 py-3 text-sm" />
+                <input type="number" placeholder="10" value={heightIn} onChange={(e) => setHeightIn(e.target.value)} className="w-20 rounded border border-gray-300 px-3 py-3 text-sm" />
                 <span className="flex items-center text-sm text-gray-500">in</span>
               </div>
             </div>
