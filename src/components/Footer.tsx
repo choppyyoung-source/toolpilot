@@ -28,12 +28,18 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="mb-3 font-semibold text-gray-900">About</h3>
-            <p className="text-sm text-gray-600">
-              ToolPilot provides free, fast, and privacy-friendly online tools.
-              All processing happens in your browser — your data never leaves
-              your device.
-            </p>
+            <h3 className="mb-3 font-semibold text-gray-900">Company</h3>
+            <ul className="space-y-1">
+              <li>
+                <Link href="/about" className="text-sm text-gray-600 hover:text-gray-900">About Us</Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="text-sm text-gray-600 hover:text-gray-900">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link href="/terms" className="text-sm text-gray-600 hover:text-gray-900">Terms of Service</Link>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="mt-8 border-t border-gray-200 pt-4 text-center text-sm text-gray-500">
