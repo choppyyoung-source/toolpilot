@@ -61,6 +61,16 @@ export const tools: Tool[] = [
     ],
   },
   {
+    slug: "emoji-picker",
+    name: "Emoji & Symbol Picker",
+    description: "Click to copy emojis, kaomoji, symbols, and special characters.",
+    longDescription:
+      "Free emoji picker and special character map. Click to copy emojis, kaomoji, arrows, stars, and Unicode symbols. Over 700 characters organized in 10 categories.",
+    category: "text",
+    icon: "😀",
+    keywords: ["emoji picker", "special characters", "kaomoji", "copy emoji", "symbol picker"],
+  },
+  {
     slug: "json-formatter",
     name: "JSON Formatter & Validator",
     description: "Format, validate, and beautify JSON data with syntax highlighting.",
