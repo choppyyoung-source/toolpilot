@@ -5,6 +5,7 @@ import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 function encodeEntities(str: string): string {
   return str.replace(/[&<>"'/]/g, (c) => {
@@ -74,6 +75,7 @@ export default function HtmlEntityPage() {
 
       <FAQ items={faqs} />
       <AdBanner slot="tool-bottom" format="horizontal" />
+      <RelatedTools currentSlug="html-entity-encoder" />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 function diffLines(a: string, b: string): { type: "same" | "add" | "remove"; text: string }[] {
   const linesA = a.split("\n");
@@ -88,6 +89,7 @@ export default function DiffCheckerPage() {
         { question: "Can I compare code files?", answer: "Yes. Simply paste the contents of two code files and click Compare. The tool preserves whitespace and formatting for accurate comparison." },
         { question: "Is there a file size limit?", answer: "Since everything runs in your browser, the limit depends on your device's memory. It works well for texts up to tens of thousands of lines." },
       ]} />
+      <RelatedTools currentSlug="diff-checker" />
     </div>
   );
 }

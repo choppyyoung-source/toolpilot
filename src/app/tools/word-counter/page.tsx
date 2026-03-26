@@ -5,6 +5,7 @@ import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 function analyze(text: string) {
   const trimmed = text.trim();
@@ -168,6 +169,7 @@ export default function WordCounterPage() {
       <FAQ items={faqs} />
 
       <AdBanner slot="tool-bottom" format="horizontal" />
+      <RelatedTools currentSlug="word-counter" />
     </div>
   );
 }

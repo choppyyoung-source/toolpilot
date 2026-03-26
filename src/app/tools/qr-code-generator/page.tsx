@@ -6,6 +6,7 @@ import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 const faqs = [
   {
@@ -156,6 +157,7 @@ export default function QrCodeGeneratorPage() {
 
       <FAQ items={faqs} />
       <AdBanner slot="tool-bottom" format="horizontal" />
+      <RelatedTools currentSlug="qr-code-generator" />
     </div>
   );
 }

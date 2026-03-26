@@ -4,6 +4,7 @@ import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 function jsonToCsv(json: unknown[]): string {
   if (!Array.isArray(json) || json.length === 0) return "";
@@ -70,6 +71,7 @@ export default function JsonToCsvPage() {
         { question: "How are nested objects handled?", answer: "Nested objects and arrays are converted to their JSON string representation in the CSV cell. For best results, flatten your JSON before converting." },
         { question: "Can I open the CSV in Excel?", answer: "Yes. Click Download CSV to save the file, then open it directly in Excel, Google Sheets, or any spreadsheet application." },
       ]} />
+      <RelatedTools currentSlug="json-to-csv" />
     </div>
   );
 }

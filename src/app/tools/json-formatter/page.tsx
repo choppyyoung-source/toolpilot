@@ -5,6 +5,7 @@ import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 const faqs = [
   {
@@ -212,6 +213,7 @@ export default function JsonFormatterPage() {
       <FAQ items={faqs} />
 
       <AdBanner slot="tool-bottom" format="horizontal" />
+      <RelatedTools currentSlug="json-formatter" />
     </div>
   );
 }

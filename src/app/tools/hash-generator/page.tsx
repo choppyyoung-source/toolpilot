@@ -4,6 +4,7 @@ import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 async function hash(algo: string, text: string): Promise<string> {
   const data = new TextEncoder().encode(text);
@@ -66,6 +67,7 @@ export default function HashGeneratorPage() {
         { question: "Is this tool secure?", answer: "Yes. This tool uses the Web Crypto API built into your browser, which provides cryptographic-grade implementations. No data is sent to any server." },
         { question: "Why is MD5 not included?", answer: "MD5 is cryptographically broken and should not be used for security purposes. The Web Crypto API does not support MD5. We only include secure hash algorithms." },
       ]} />
+      <RelatedTools currentSlug="hash-generator" />
     </div>
   );
 }

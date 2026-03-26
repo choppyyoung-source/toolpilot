@@ -5,6 +5,7 @@ import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 const CHARS = {
   uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -135,6 +136,7 @@ export default function PasswordGeneratorPage() {
 
       <FAQ items={faqs} />
       <AdBanner slot="tool-bottom" format="horizontal" />
+      <RelatedTools currentSlug="password-generator" />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 const faqs = [
   {
@@ -228,6 +229,7 @@ export default function Base64Page() {
       <FAQ items={faqs} />
 
       <AdBanner slot="tool-bottom" format="horizontal" />
+      <RelatedTools currentSlug="base64-encoder-decoder" />
     </div>
   );
 }

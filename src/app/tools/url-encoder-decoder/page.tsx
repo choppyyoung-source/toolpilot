@@ -5,6 +5,7 @@ import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 const faqs = [
   { question: "What is URL encoding?", answer: "URL encoding (percent-encoding) replaces unsafe characters in a URL with a '%' followed by two hexadecimal digits. For example, a space becomes '%20'. This ensures URLs are transmitted correctly over the internet." },
@@ -63,6 +64,7 @@ export default function UrlEncoderPage() {
 
       <FAQ items={faqs} />
       <AdBanner slot="tool-bottom" format="horizontal" />
+      <RelatedTools currentSlug="url-encoder-decoder" />
     </div>
   );
 }

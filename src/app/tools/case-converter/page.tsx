@@ -5,6 +5,7 @@ import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 const converters = [
   { label: "UPPERCASE", fn: (s: string) => s.toUpperCase() },
@@ -218,6 +219,7 @@ export default function CaseConverterPage() {
       <FAQ items={faqs} />
 
       <AdBanner slot="tool-bottom" format="horizontal" />
+      <RelatedTools currentSlug="case-converter" />
     </div>
   );
 }

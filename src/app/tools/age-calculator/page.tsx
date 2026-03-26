@@ -4,6 +4,7 @@ import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 function calcAge(birth: Date, now: Date) {
   let years = now.getFullYear() - birth.getFullYear();
@@ -82,6 +83,7 @@ export default function AgeCalculatorPage() {
         { question: "Does it account for leap years?", answer: "Yes. The calculation uses JavaScript's Date object which correctly handles leap years, including century leap year rules." },
         { question: "Can I calculate the age between two dates?", answer: "Currently this tool calculates age from a birth date to today. For custom date ranges, use our Timestamp Converter to work with specific dates." },
       ]} />
+      <RelatedTools currentSlug="age-calculator" />
     </div>
   );
 }

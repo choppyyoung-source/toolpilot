@@ -39,9 +39,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "ToolPilot",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "ToolPilot — Free Online Tools for Everyone",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og-image.svg"],
   },
   robots: {
     index: true,

@@ -5,6 +5,7 @@ import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 const faqs = [
   { question: "What is a Unix timestamp?", answer: "A Unix timestamp (also called Epoch time or POSIX time) is the number of seconds that have elapsed since January 1, 1970, at 00:00:00 UTC. It is widely used in programming and databases to represent dates and times as a single number." },
@@ -78,6 +79,7 @@ export default function TimestampConverterPage() {
 
       <FAQ items={faqs} />
       <AdBanner slot="tool-bottom" format="horizontal" />
+      <RelatedTools currentSlug="timestamp-converter" />
     </div>
   );
 }

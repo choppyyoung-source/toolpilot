@@ -4,6 +4,7 @@ import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 const emojiCategories = [
   {
@@ -237,6 +238,7 @@ export default function EmojiPickerPage() {
           },
         ]}
       />
+      <RelatedTools currentSlug="emoji-picker" />
     </div>
   );
 }

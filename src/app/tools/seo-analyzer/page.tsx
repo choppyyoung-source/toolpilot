@@ -4,6 +4,7 @@ import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 interface AnalysisResult {
   url: string;
@@ -324,6 +325,7 @@ export default function SeoAnalyzerPage() {
       </section>
 
       <FAQ items={faqs} />
+      <RelatedTools currentSlug="seo-analyzer" />
     </div>
   );
 }

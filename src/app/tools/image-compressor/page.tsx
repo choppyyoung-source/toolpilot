@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + " B";
@@ -110,6 +111,7 @@ export default function ImageCompressorPage() {
         { question: "What image formats are supported?", answer: "You can upload any image format your browser supports (JPEG, PNG, WebP, GIF, BMP). The output is always JPEG for optimal compression." },
         { question: "How much can I reduce the file size?", answer: "Typically 50-80% reduction at 70% quality with minimal visible difference. Results vary depending on the image content and original format." },
       ]} />
+      <RelatedTools currentSlug="image-compressor" />
     </div>
   );
 }

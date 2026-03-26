@@ -1,10 +1,53 @@
 import ToolCard from "@/components/ToolCard";
 import AdBanner from "@/components/AdBanner";
-import { categories, getToolsByCategory } from "@/lib/tools";
+import JsonLd from "@/components/JsonLd";
+import { categories, getToolsByCategory, tools } from "@/lib/tools";
+
+function itemListSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Free Online Tools",
+    description: "A collection of 24+ free online tools for developers, designers, and everyone.",
+    numberOfItems: tools.length,
+    itemListElement: tools.map((tool, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: tool.name,
+      url: `https://toolpilot.pages.dev/tools/${tool.slug}`,
+      description: tool.description,
+    })),
+  };
+}
+
+function collectionPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "ToolPilot — Free Online Tools",
+    description: "Free online tools for everyone. Word counter, JSON formatter, Base64 encoder, color converter, unit converter, and more.",
+    url: "https://toolpilot.pages.dev",
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: tools.length,
+      itemListElement: tools.map((tool, i) => ({
+        "@type": "SoftwareApplication",
+        position: i + 1,
+        name: tool.name,
+        url: `https://toolpilot.pages.dev/tools/${tool.slug}`,
+        applicationCategory: "WebApplication",
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      })),
+    },
+  };
+}
 
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <JsonLd data={itemListSchema()} />
+      <JsonLd data={collectionPageSchema()} />
+
       {/* Hero */}
       <section className="mb-12 text-center">
         <h1 className="mb-3 text-4xl font-bold tracking-tight">

@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 export default function RegexTesterPage() {
   const [pattern, setPattern] = useState("");
@@ -115,6 +116,7 @@ export default function RegexTesterPage() {
         { question: "Can I use named capture groups?", answer: "Yes. Use (?<name>pattern) syntax. Named groups will appear in the match details." },
         { question: "Is there a regex cheat sheet?", answer: ". matches any character, \\d matches digits, \\w matches word characters, \\s matches whitespace, * is 0+, + is 1+, ? is 0 or 1, {n} is exactly n, [abc] is character class, ^ is start, $ is end." },
       ]} />
+      <RelatedTools currentSlug="regex-tester" />
     </div>
   );
 }

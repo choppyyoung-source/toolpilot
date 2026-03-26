@@ -4,6 +4,7 @@ import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 function getBmiCategory(bmi: number): { label: string; color: string } {
   if (bmi < 18.5) return { label: "Underweight", color: "text-blue-600" };
@@ -112,6 +113,7 @@ export default function BmiCalculatorPage() {
         { question: "What is a healthy BMI?", answer: "A BMI between 18.5 and 24.9 is generally considered healthy for adults. However, optimal BMI can vary based on individual factors. Consult a healthcare provider for personalized advice." },
         { question: "Does this tool store my data?", answer: "No. All calculations happen in your browser. Your height and weight are never sent to any server." },
       ]} />
+      <RelatedTools currentSlug="bmi-calculator" />
     </div>
   );
 }

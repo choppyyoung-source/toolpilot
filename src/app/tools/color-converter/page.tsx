@@ -5,6 +5,7 @@ import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 function hexToRgb(hex: string): [number, number, number] | null {
   const m = hex
@@ -260,6 +261,7 @@ export default function ColorConverterPage() {
       <FAQ items={faqs} />
 
       <AdBanner slot="tool-bottom" format="horizontal" />
+      <RelatedTools currentSlug="color-converter" />
     </div>
   );
 }

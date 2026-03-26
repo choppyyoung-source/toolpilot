@@ -4,6 +4,7 @@ import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
 import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 export default function CssGradientPage() {
   const [color1, setColor1] = useState("#667eea");
@@ -85,6 +86,7 @@ export default function CssGradientPage() {
         { question: "Can I use more than two colors?", answer: "CSS supports multi-stop gradients with any number of colors. This tool generates two-color gradients for simplicity. You can manually add more color stops to the CSS output." },
         { question: "Do CSS gradients work in all browsers?", answer: "Yes. CSS gradients are supported in all modern browsers including Chrome, Firefox, Safari, Edge, and mobile browsers. No vendor prefixes are needed." },
       ]} />
+      <RelatedTools currentSlug="css-gradient-generator" />
     </div>
   );
 }
