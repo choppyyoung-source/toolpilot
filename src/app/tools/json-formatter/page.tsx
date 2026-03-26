@@ -73,7 +73,7 @@ export default function JsonFormatterPage() {
           name: "JSON Formatter & Validator",
           description:
             "Free online JSON formatter, beautifier, and validator. Format, minify, and validate JSON data with syntax highlighting.",
-          url: "https://toolbox-web-self.vercel.app/tools/json-formatter",
+          url: "https://toolpilot.pages.dev/tools/json-formatter",
           category: "DeveloperApplication",
           keywords: [
             "json formatter",

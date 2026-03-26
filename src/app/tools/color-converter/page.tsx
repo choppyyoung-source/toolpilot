@@ -101,7 +101,7 @@ export default function ColorConverterPage() {
           name: "Color Converter",
           description:
             "Free online color converter. Convert colors between HEX, RGB, and HSL with a live color picker and preview.",
-          url: "https://toolbox-web-self.vercel.app/tools/color-converter",
+          url: "https://toolpilot.pages.dev/tools/color-converter",
           category: "DesignApplication",
           keywords: [
             "color converter",

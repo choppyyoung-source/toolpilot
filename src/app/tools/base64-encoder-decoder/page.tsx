@@ -76,7 +76,7 @@ export default function Base64Page() {
           name: "Base64 Encoder & Decoder",
           description:
             "Free online Base64 encoder and decoder. Convert text to and from Base64 with full Unicode support.",
-          url: "https://toolbox-web-self.vercel.app/tools/base64-encoder-decoder",
+          url: "https://toolpilot.pages.dev/tools/base64-encoder-decoder",
           category: "DeveloperApplication",
           keywords: [
             "base64 encoder",

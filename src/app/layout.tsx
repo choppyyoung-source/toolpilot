@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://toolbox-web-self.vercel.app"),
+  metadataBase: new URL("https://toolpilot.pages.dev"),
   title: {
     default: "ToolPilot — Free Online Tools for Everyone",
     template: "%s | ToolPilot",

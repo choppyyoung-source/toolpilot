@@ -20,12 +20,12 @@ export function websiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "ToolPilot",
-    url: "https://toolbox-web-self.vercel.app",
+    url: "https://toolpilot.pages.dev",
     description:
       "Free online tools for everyone. Word counter, JSON formatter, Base64 encoder, color converter, unit converter, and more.",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://toolbox-web-self.vercel.app/?q={search_term_string}",
+      target: "https://toolpilot.pages.dev/?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };
@@ -36,8 +36,8 @@ export function organizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "ToolPilot",
-    url: "https://toolbox-web-self.vercel.app",
-    logo: "https://toolbox-web-self.vercel.app/icon.png",
+    url: "https://toolpilot.pages.dev",
+    logo: "https://toolpilot.pages.dev/icon.png",
     sameAs: [],
   };
 }

@@ -81,7 +81,7 @@ export default function LoremIpsumPage() {
           name: "Lorem Ipsum Generator",
           description:
             "Generate Lorem Ipsum placeholder text in paragraphs, sentences, or words for web design, graphic design, and publishing.",
-          url: "https://toolbox-web-self.vercel.app/tools/lorem-ipsum-generator",
+          url: "https://toolpilot.pages.dev/tools/lorem-ipsum-generator",
           category: "DesignApplication",
           keywords: [
             "lorem ipsum generator",

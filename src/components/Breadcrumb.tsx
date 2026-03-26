@@ -9,7 +9,7 @@ interface BreadcrumbItem {
 export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
   const schemaItems = items.map((i) => ({
     name: i.label,
-    url: `https://toolbox-web-self.vercel.app${i.href}`,
+    url: `https://toolpilot.pages.dev${i.href}`,
   }));
 
   return (

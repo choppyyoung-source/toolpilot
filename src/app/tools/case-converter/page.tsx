@@ -101,7 +101,7 @@ export default function CaseConverterPage() {
           name: "Case Converter",
           description:
             "Free online case converter. Transform text to UPPERCASE, lowercase, Title Case, camelCase, snake_case, and kebab-case.",
-          url: "https://toolbox-web-self.vercel.app/tools/case-converter",
+          url: "https://toolpilot.pages.dev/tools/case-converter",
           category: "UtilityApplication",
           keywords: [
             "case converter",

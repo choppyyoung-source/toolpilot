@@ -65,7 +65,7 @@ export default function WordCounterPage() {
           name: "Word Counter",
           description:
             "Free online word counter tool. Count words, characters, sentences, paragraphs, and reading time instantly.",
-          url: "https://toolbox-web-self.vercel.app/tools/word-counter",
+          url: "https://toolpilot.pages.dev/tools/word-counter",
           category: "UtilityApplication",
           keywords: [
             "word counter",
@@ -83,7 +83,7 @@ export default function WordCounterPage() {
           steps: [
             {
               name: "Open the Word Counter",
-              text: "Navigate to ToolPilot's Word Counter tool at toolbox-web-self.vercel.app/tools/word-counter.",
+              text: "Navigate to ToolPilot's Word Counter tool at toolpilot.pages.dev/tools/word-counter.",
             },
             {
               name: "Enter your text",
