@@ -1,0 +1,13 @@
+{
+  "name": "toolpilot-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for ToolPilot - free online tools accessible via AI agents",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "toolpilot-mcp": "./index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}
