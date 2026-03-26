@@ -81,6 +81,46 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://toolpilot.pages.dev/tools/image-compressor</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolpilot.pages.dev/tools/regex-tester</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolpilot.pages.dev/tools/hash-generator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolpilot.pages.dev/tools/diff-checker</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolpilot.pages.dev/tools/css-gradient-generator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolpilot.pages.dev/tools/json-to-csv</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolpilot.pages.dev/tools/age-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolpilot.pages.dev/tools/bmi-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://toolpilot.pages.dev/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
