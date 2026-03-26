@@ -12,6 +12,7 @@ export const categories = [
   { id: "text", name: "Text Tools", icon: "📝" },
   { id: "developer", name: "Developer Tools", icon: "💻" },
   { id: "converter", name: "Converters", icon: "🔄" },
+  { id: "security", name: "Security Tools", icon: "🔒" },
 ];
 
 export const tools: Tool[] = [
@@ -119,6 +120,66 @@ export const tools: Tool[] = [
       "weight converter",
       "temperature converter",
     ],
+  },
+  {
+    slug: "qr-code-generator",
+    name: "QR Code Generator",
+    description: "Generate QR codes for URLs, text, Wi-Fi, and more.",
+    longDescription:
+      "Free online QR code generator. Create QR codes for any URL, text, or data. Download as high-resolution PNG. No sign-up required.",
+    category: "converter",
+    icon: "📱",
+    keywords: ["qr code generator", "create qr code", "qr code maker", "free qr code"],
+  },
+  {
+    slug: "password-generator",
+    name: "Password Generator",
+    description: "Create strong, random passwords with customizable options.",
+    longDescription:
+      "Free online password generator. Create strong, secure, random passwords with customizable length and character types. Uses cryptographic randomness.",
+    category: "security",
+    icon: "🔑",
+    keywords: ["password generator", "random password", "strong password", "secure password generator"],
+  },
+  {
+    slug: "url-encoder-decoder",
+    name: "URL Encoder & Decoder",
+    description: "Encode or decode URLs and query parameters instantly.",
+    longDescription:
+      "Free online URL encoder and decoder. Percent-encode or decode URLs and query parameters. Supports full Unicode characters.",
+    category: "developer",
+    icon: "🔗",
+    keywords: ["url encoder", "url decoder", "percent encoding", "urlencode"],
+  },
+  {
+    slug: "markdown-preview",
+    name: "Markdown Preview",
+    description: "Write Markdown and see a live preview with HTML export.",
+    longDescription:
+      "Free online Markdown previewer and editor. Write Markdown and see live-rendered HTML preview. Copy the HTML output with one click.",
+    category: "developer",
+    icon: "📝",
+    keywords: ["markdown preview", "markdown editor", "markdown to html", "markdown viewer"],
+  },
+  {
+    slug: "timestamp-converter",
+    name: "Timestamp Converter",
+    description: "Convert between Unix timestamps and human-readable dates.",
+    longDescription:
+      "Free online Unix timestamp converter. Convert timestamps to dates and dates to timestamps. Supports seconds and milliseconds.",
+    category: "developer",
+    icon: "⏱️",
+    keywords: ["timestamp converter", "unix timestamp", "epoch converter", "date to timestamp"],
+  },
+  {
+    slug: "html-entity-encoder",
+    name: "HTML Entity Encoder",
+    description: "Encode or decode HTML entities for safe web display.",
+    longDescription:
+      "Free online HTML entity encoder and decoder. Encode special characters for safe HTML display or decode entities back to plain text.",
+    category: "developer",
+    icon: "&lt;&gt;",
+    keywords: ["html entity encoder", "html entity decoder", "html encode", "html special characters"],
   },
 ];
 
