@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Toolbox body -->
+  <rect x="8" y="48" width="112" height="68" rx="8" fill="#DC2626"/>
+  <rect x="8" y="48" width="112" height="68" rx="8" fill="url(#bodyGrad)"/>
+  <!-- Lid -->
+  <rect x="4" y="40" width="120" height="16" rx="6" fill="#B91C1C"/>
+  <!-- Handle -->
+  <rect x="42" y="24" width="44" height="20" rx="6" fill="none" stroke="#7F1D1D" stroke-width="6"/>
+  <!-- Latch -->
+  <rect x="56" y="52" width="16" height="10" rx="3" fill="#FDE68A"/>
+  <!-- Metal band -->
+  <rect x="8" y="72" width="112" height="4" fill="#991B1B" opacity="0.5"/>
+  <defs>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+</svg>
