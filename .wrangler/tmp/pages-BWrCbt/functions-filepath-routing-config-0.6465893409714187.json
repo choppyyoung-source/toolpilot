@@ -1,0 +1,101 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/analyze",
+      "mountPath": "/api",
+      "method": "OPTIONS",
+      "module": [
+        "api/analyze.ts:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/analyze",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/analyze.ts:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/base64",
+      "mountPath": "/api",
+      "method": "OPTIONS",
+      "module": [
+        "api/base64.ts:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/base64",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/base64.ts:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/color-convert",
+      "mountPath": "/api",
+      "method": "OPTIONS",
+      "module": [
+        "api/color-convert.ts:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/color-convert",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/color-convert.ts:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/hash",
+      "mountPath": "/api",
+      "method": "OPTIONS",
+      "module": [
+        "api/hash.ts:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/hash",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/hash.ts:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/json-format",
+      "mountPath": "/api",
+      "method": "OPTIONS",
+      "module": [
+        "api/json-format.ts:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/json-format",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/json-format.ts:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/unit-convert",
+      "mountPath": "/api",
+      "method": "OPTIONS",
+      "module": [
+        "api/unit-convert.ts:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/unit-convert",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/unit-convert.ts:onRequestPost"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}
