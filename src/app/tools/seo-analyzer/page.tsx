@@ -25,8 +25,23 @@ interface AnalysisResult {
   hasRobots: boolean;
   hasSitemap: boolean;
   jsonLdCount: number;
+  schemaTypes: string[];
   wordCount: number;
   htmlSize: number;
+  // AEO
+  hasFAQSchema: boolean;
+  hasHowToSchema: boolean;
+  questionHeadings: number;
+  hasDirectAnswer: boolean;
+  listCount: number;
+  tableCount: number;
+  // GEO
+  hasWebAppSchema: boolean;
+  hasArticleSchema: boolean;
+  hasBreadcrumbSchema: boolean;
+  hasItemListSchema: boolean;
+  hasLlmsTxt: boolean;
+  hasDefinitionPattern: boolean;
 }
 
 interface CheckItem {
@@ -99,6 +114,49 @@ function analyzeChecks(r: AnalysisResult): CheckItem[] {
   // Page size
   checks.push({ label: "Page Size", status: r.htmlSize < 200 ? "pass" : "warn", detail: `${r.htmlSize} KB HTML size.${r.htmlSize > 200 ? " Consider optimizing." : ""}`, category: "Performance" });
 
+  // ── AEO (Answer Engine Optimization) ──
+
+  // FAQ Schema
+  checks.push({ label: "FAQ Schema (FAQPage)", status: r.hasFAQSchema ? "pass" : "warn", detail: r.hasFAQSchema ? "FAQPage schema detected. Eligible for Google FAQ rich results and AI answer extraction." : "No FAQPage schema. Add FAQ structured data to appear in 'People Also Ask' and AI answers.", category: "AEO" });
+
+  // HowTo Schema
+  checks.push({ label: "HowTo Schema", status: r.hasHowToSchema ? "pass" : "warn", detail: r.hasHowToSchema ? "HowTo schema detected. Eligible for step-by-step rich results." : "No HowTo schema. Add step-by-step structured data for how-to rich snippets.", category: "AEO" });
+
+  // Direct Answer Paragraph
+  checks.push({ label: "Direct Answer Paragraph", status: r.hasDirectAnswer ? "pass" : "warn", detail: r.hasDirectAnswer ? "Found a concise answer paragraph after H1. Good for featured snippets and AI extraction." : "No clear answer paragraph after H1. Add a 15-80 word summary right after your H1 for featured snippet targeting.", category: "AEO" });
+
+  // Question-Based Headings
+  checks.push({ label: "Question-Based Headings", status: r.questionHeadings >= 2 ? "pass" : r.questionHeadings > 0 ? "warn" : "fail", detail: r.questionHeadings > 0 ? `${r.questionHeadings} question-style heading(s) found (What, How, Why, etc.). Great for People Also Ask.` : "No question-based headings. Use 'What is...?', 'How to...?' style H2/H3 headings to target answer engines.", category: "AEO" });
+
+  // Lists (featured snippet targeting)
+  checks.push({ label: "Lists for Snippets", status: r.listCount >= 2 ? "pass" : r.listCount > 0 ? "warn" : "fail", detail: r.listCount > 0 ? `${r.listCount} list(s) found. Lists are preferred by Google for featured snippets.` : "No lists found. Add ordered or unordered lists — Google prefers them for featured snippets.", category: "AEO" });
+
+  // Tables
+  checks.push({ label: "Tables for Snippets", status: r.tableCount > 0 ? "pass" : "warn", detail: r.tableCount > 0 ? `${r.tableCount} table(s) found. Tables can appear as featured snippets.` : "No tables found. Consider adding comparison or data tables for table-style featured snippets.", category: "AEO" });
+
+  // ── GEO (Generative Engine Optimization) ──
+
+  // Breadcrumb Schema
+  checks.push({ label: "Breadcrumb Schema", status: r.hasBreadcrumbSchema ? "pass" : "warn", detail: r.hasBreadcrumbSchema ? "BreadcrumbList schema detected. Helps AI understand site hierarchy." : "No BreadcrumbList schema. Add breadcrumbs to help AI engines understand your site structure.", category: "GEO" });
+
+  // llms.txt
+  checks.push({ label: "llms.txt", status: r.hasLlmsTxt ? "pass" : "warn", detail: r.hasLlmsTxt ? "llms.txt found. AI crawlers can understand your site's purpose and structure." : "No llms.txt found. Add a /llms.txt file to help AI agents discover and understand your content.", category: "GEO" });
+
+  // Definition Patterns
+  checks.push({ label: "Entity Definitions", status: r.hasDefinitionPattern ? "pass" : "warn", detail: r.hasDefinitionPattern ? "Clear definition patterns found ('is a', 'refers to'). AI engines can extract authoritative definitions." : "No clear definition patterns. Use phrases like 'X is a...', 'X refers to...' so AI can cite your content.", category: "GEO" });
+
+  // Schema Richness
+  const schemaCount = r.schemaTypes?.length || 0;
+  checks.push({ label: "Schema Richness", status: schemaCount >= 4 ? "pass" : schemaCount >= 2 ? "warn" : "fail", detail: schemaCount > 0 ? `${schemaCount} schema type(s): ${r.schemaTypes?.join(", ")}. More schemas = better AI understanding.` : "No schema types detected. Add multiple schemas (WebApplication, FAQPage, HowTo, BreadcrumbList) for maximum AI discoverability.", category: "GEO" });
+
+  // Article/WebApp Schema
+  const hasAppOrArticle = r.hasWebAppSchema || r.hasArticleSchema;
+  checks.push({ label: "Content Type Schema", status: hasAppOrArticle ? "pass" : "warn", detail: hasAppOrArticle ? `${r.hasWebAppSchema ? "WebApplication" : "Article"} schema detected. AI understands your content type.` : "No Article or WebApplication schema. Add one to help AI categorize your content.", category: "GEO" });
+
+  // Citation-Friendly (OG + structured data + clear content)
+  const citationScore = [r.og.title, r.og.description, r.jsonLdCount > 0, r.hasDirectAnswer, r.hasFAQSchema].filter(Boolean).length;
+  checks.push({ label: "AI Citation Readiness", status: citationScore >= 4 ? "pass" : citationScore >= 2 ? "warn" : "fail", detail: `${citationScore}/5 citation signals. AI engines need OG tags, structured data, direct answers, and FAQ to cite your content.`, category: "GEO" });
+
   return checks;
 }
 
@@ -127,10 +185,11 @@ function scoreBg(score: number): string {
 const statusIcon = { pass: "✅", warn: "⚠️", fail: "❌" };
 
 const faqs = [
-  { question: "What does this SEO analyzer check?", answer: "It checks 16+ SEO factors including meta tags (title, description), HTTPS security, mobile-friendliness, heading structure, image alt text, Open Graph and Twitter Card tags, robots.txt, XML sitemap, structured data (JSON-LD), content length, and page size." },
-  { question: "How is the SEO score calculated?", answer: "Each check earns points: passed checks get full points, warnings get half points, and failed checks get zero. The final score is a percentage of total possible points." },
-  { question: "Is this as accurate as paid tools like Ahrefs or SEMrush?", answer: "This tool checks on-page SEO factors that are directly observable from the page HTML. Paid tools additionally provide traffic estimates, backlink analysis, keyword rankings, and competitive data which require large databases." },
-  { question: "How often should I run an SEO audit?", answer: "Run an SEO check after any significant content or technical changes. For active sites, a monthly audit is a good practice to catch issues early." },
+  { question: "What does this analyzer check?", answer: "It performs 28+ checks across three categories: SEO (meta tags, HTTPS, headings, images, OG tags, sitemap, structured data), AEO (FAQ schema, HowTo schema, direct answer paragraphs, question headings, lists, tables), and GEO (llms.txt, schema richness, entity definitions, breadcrumbs, AI citation readiness)." },
+  { question: "What is AEO (Answer Engine Optimization)?", answer: "AEO is the practice of optimizing content to appear in Google's featured snippets, 'People Also Ask' boxes, and voice search results. It focuses on structured answers, FAQ schema, question-based headings, and list/table formatting that answer engines prefer." },
+  { question: "What is GEO (Generative Engine Optimization)?", answer: "GEO is the practice of optimizing content so AI-powered search engines (ChatGPT, Perplexity, Google AI Overviews, Bing Copilot) cite your content in their generated answers. It focuses on structured data, clear entity definitions, llms.txt, and citation-friendly content." },
+  { question: "How is the score calculated?", answer: "Each of the 28+ checks earns points: passed checks get full points, warnings get half points, and failed checks get zero. The score is a percentage of total possible points across all SEO, AEO, and GEO checks." },
+  { question: "What is llms.txt?", answer: "llms.txt is a file (similar to robots.txt) placed at the root of your website that helps AI language models understand your site's purpose, structure, and available resources. It's an emerging standard for AI discoverability." },
   { question: "Does this tool store the URLs I analyze?", answer: "No. The URL is sent to our API only to fetch the page content for analysis. Nothing is stored or logged." },
 ];
 
@@ -175,11 +234,11 @@ export default function SeoAnalyzerPage() {
     <div className="mx-auto max-w-4xl px-4 py-8">
       <JsonLd
         data={webApplicationSchema({
-          name: "SEO Analyzer",
-          description: "Free SEO analyzer tool. Check any website's SEO health with 16+ on-page checks. Get an SEO score and actionable recommendations.",
+          name: "SEO, AEO & GEO Analyzer",
+          description: "Free SEO, AEO, and GEO analyzer. Check any website with 28+ checks for search engines, answer engines, and AI-powered search.",
           url: "https://toolpilot.pages.dev/tools/seo-analyzer",
           category: "DeveloperApplication",
-          keywords: ["seo analyzer", "seo checker", "website analyzer", "seo audit", "site analysis"],
+          keywords: ["seo analyzer", "aeo checker", "geo analyzer", "answer engine optimization", "generative engine optimization"],
         })}
       />
       <Breadcrumb
@@ -190,10 +249,12 @@ export default function SeoAnalyzerPage() {
         ]}
       />
 
-      <h1 className="mb-2 text-3xl font-bold">SEO Analyzer</h1>
+      <h1 className="mb-2 text-3xl font-bold">SEO, AEO & GEO Analyzer</h1>
       <p className="mb-6 text-gray-600">
-        Enter any URL to get an instant SEO audit with 16+ checks. Get a score
-        and actionable recommendations to improve your search rankings.
+        Enter any URL to get an instant audit with 28+ checks covering SEO,
+        Answer Engine Optimization (AEO), and Generative Engine Optimization
+        (GEO). Get a score and recommendations to rank in Google, AI answers,
+        and generative search.
       </p>
 
       {/* Input */}
@@ -306,22 +367,42 @@ export default function SeoAnalyzerPage() {
       )}
 
       <section className="mt-8 rounded-lg bg-white p-6 text-sm text-gray-600">
-        <h2 className="mb-2 text-lg font-semibold text-gray-900">What Is an SEO Analyzer?</h2>
+        <h2 className="mb-2 text-lg font-semibold text-gray-900">What Is SEO, AEO & GEO?</h2>
         <p className="mb-3">
-          An SEO analyzer is a tool that examines a web page and evaluates it
-          against search engine optimization best practices. It checks technical
-          factors, content quality signals, and social media readiness to give
-          you a comprehensive overview of your page&apos;s SEO health.
+          Modern search has three layers: <strong>SEO</strong> (Search Engine Optimization) for traditional Google rankings, <strong>AEO</strong> (Answer Engine Optimization) for featured snippets and &quot;People Also Ask&quot;, and <strong>GEO</strong> (Generative Engine Optimization) for AI-powered search like ChatGPT, Perplexity, and Google AI Overviews.
         </p>
-        <h3 className="mb-1 font-semibold text-gray-900">What We Check</h3>
-        <ul className="list-inside list-disc space-y-1">
-          <li><strong>Meta Tags</strong> — Title, description, viewport, canonical, language</li>
-          <li><strong>Security</strong> — HTTPS encryption</li>
-          <li><strong>Content</strong> — Heading structure, image alt text, word count</li>
-          <li><strong>Social</strong> — Open Graph and Twitter Card tags</li>
-          <li><strong>Technical</strong> — robots.txt, sitemap.xml, structured data</li>
-          <li><strong>Performance</strong> — Page size</li>
-        </ul>
+        <h3 className="mb-2 font-semibold text-gray-900">What We Check (28+ Items)</h3>
+        <div className="grid gap-3 sm:grid-cols-3">
+          <div>
+            <h4 className="font-medium text-gray-900">SEO (16 checks)</h4>
+            <ul className="list-inside list-disc space-y-1 text-xs">
+              <li>Meta tags & headings</li>
+              <li>HTTPS & mobile</li>
+              <li>Images, links, content</li>
+              <li>OG & Twitter Card</li>
+              <li>robots.txt & sitemap</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-medium text-gray-900">AEO (6 checks)</h4>
+            <ul className="list-inside list-disc space-y-1 text-xs">
+              <li>FAQ & HowTo schema</li>
+              <li>Direct answer paragraph</li>
+              <li>Question-based headings</li>
+              <li>Lists & tables for snippets</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-medium text-gray-900">GEO (6 checks)</h4>
+            <ul className="list-inside list-disc space-y-1 text-xs">
+              <li>llms.txt for AI crawlers</li>
+              <li>Schema richness & types</li>
+              <li>Entity definitions</li>
+              <li>Breadcrumb structure</li>
+              <li>AI citation readiness</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <FAQ items={faqs} />

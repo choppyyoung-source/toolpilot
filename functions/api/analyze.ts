@@ -108,17 +108,68 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     // Structured data
     const jsonLdCount = (html.match(/application\/ld\+json/gi) || []).length;
 
+    // AEO/GEO: Parse JSON-LD types
+    const jsonLdBlocks = html.match(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi) || [];
+    const schemaTypes: string[] = [];
+    for (const block of jsonLdBlocks) {
+      try {
+        const content = block.replace(/<\/?script[^>]*>/gi, "");
+        const parsed = JSON.parse(content);
+        if (parsed["@type"]) schemaTypes.push(parsed["@type"]);
+      } catch {}
+    }
+
+    // AEO: FAQ schema
+    const hasFAQSchema = schemaTypes.includes("FAQPage");
+    // AEO: HowTo schema
+    const hasHowToSchema = schemaTypes.includes("HowTo");
+    // GEO: WebApplication schema
+    const hasWebAppSchema = schemaTypes.includes("WebApplication");
+    // GEO: Article schema
+    const hasArticleSchema = schemaTypes.includes("Article") || schemaTypes.includes("BlogPosting");
+    // GEO: BreadcrumbList
+    const hasBreadcrumbSchema = schemaTypes.includes("BreadcrumbList");
+    // GEO: ItemList
+    const hasItemListSchema = schemaTypes.includes("ItemList");
+
+    // AEO: Question-based headings (for People Also Ask)
+    const questionHeadings = (html.match(/<h[2-3][^>]*>[^<]*(what|how|why|when|where|which|can|does|is|are|do|should)[^<]*\??\s*<\/h[2-3]>/gi) || []).length;
+
+    // GEO: llms.txt
+    let hasLlmsTxt = false;
+    try {
+      const llmsUrl = new URL("/llms.txt", finalUrl).href;
+      const llmsRes = await fetch(llmsUrl, { signal: AbortSignal.timeout(5000) });
+      hasLlmsTxt = llmsRes.ok && (await llmsRes.text()).length > 10;
+    } catch {}
+
+    // AEO: Direct answer paragraph (first <p> after <h1> with 20-60 words)
+    const firstParagraphMatch = html.match(/<h1[^>]*>[\s\S]*?<\/h1>\s*(?:<[^p][^>]*>[\s\S]*?<\/[^p][^>]*>\s*)*<p[^>]*>([\s\S]*?)<\/p>/i);
+    const firstParagraph = firstParagraphMatch ? firstParagraphMatch[1].replace(/<[^>]+>/g, "").trim() : "";
+    const firstParagraphWords = firstParagraph ? firstParagraph.split(/\s+/).length : 0;
+    const hasDirectAnswer = firstParagraphWords >= 15 && firstParagraphWords <= 80;
+
+    // GEO: Speakable-friendly content (short, clear sentences)
+    const bodyText = html.replace(/<script[\s\S]*?<\/script>/gi, "").replace(/<style[\s\S]*?<\/style>/gi, "").replace(/<[^>]+>/g, " ");
+    const hasDefinitionPattern = /(?:is a|is an|refers to|defined as|means that)/i.test(bodyText);
+
+    // AEO: Lists (ordered/unordered) for featured snippet targeting
+    const listCount = (html.match(/<(?:ul|ol)[^>]*>/gi) || []).length;
+
+    // AEO: Table for featured snippet
+    const tableCount = (html.match(/<table[^>]*>/gi) || []).length;
+
     // Lang attribute
     const langAttr = (html.match(/<html[^>]+lang=["']([^"']*)["']/i) || [])[1] || "";
 
     // Word count (rough)
-    const textContent = html
+    const textContent2 = html
       .replace(/<script[\s\S]*?<\/script>/gi, "")
       .replace(/<style[\s\S]*?<\/style>/gi, "")
       .replace(/<[^>]+>/g, " ")
       .replace(/\s+/g, " ")
       .trim();
-    const wordCount = textContent.split(" ").length;
+    const wordCount = textContent2.split(" ").length;
 
     const result = {
       url: finalUrl,
@@ -139,8 +190,23 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       hasRobots,
       hasSitemap,
       jsonLdCount,
+      schemaTypes,
       wordCount,
       htmlSize: Math.round(html.length / 1024),
+      // AEO fields
+      hasFAQSchema,
+      hasHowToSchema,
+      questionHeadings,
+      hasDirectAnswer,
+      listCount,
+      tableCount,
+      // GEO fields
+      hasWebAppSchema,
+      hasArticleSchema,
+      hasBreadcrumbSchema,
+      hasItemListSchema,
+      hasLlmsTxt,
+      hasDefinitionPattern,
     };
 
     return new Response(JSON.stringify(result), { headers });

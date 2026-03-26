@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SEO Analyzer — Free Website SEO Checker",
+  title: "SEO, AEO & GEO Analyzer — Free Website Checker",
   description:
-    "Free SEO analyzer tool. Check any website's SEO score with 16+ on-page checks. Get actionable recommendations for meta tags, headings, images, structured data, and more.",
+    "Free SEO, AEO, and GEO analyzer. Check any website with 28+ checks covering on-page SEO, Answer Engine Optimization, and Generative Engine Optimization. Get a score and actionable recommendations.",
   keywords: [
     "seo analyzer",
-    "seo checker",
-    "website analyzer",
+    "aeo checker",
+    "geo analyzer",
+    "answer engine optimization",
+    "generative engine optimization",
     "seo audit tool",
-    "site seo check",
-    "free seo tool",
+    "website seo checker",
+    "ai seo tool",
   ],
 };
 

@@ -153,13 +153,13 @@ export const tools: Tool[] = [
   },
   {
     slug: "seo-analyzer",
-    name: "SEO Analyzer",
-    description: "Check any website's SEO score with 16+ on-page checks.",
+    name: "SEO, AEO & GEO Analyzer",
+    description: "Check any website's SEO, AEO, and GEO score with 28+ checks.",
     longDescription:
-      "Free SEO analyzer tool. Enter any URL to get an instant SEO audit with 16+ checks covering meta tags, headings, images, structured data, and more.",
+      "Free SEO, AEO, and GEO analyzer. 28+ checks for search engines, answer engines, and AI-powered search.",
     category: "developer",
     icon: "🔍",
-    keywords: ["seo analyzer", "seo checker", "website analyzer", "seo audit"],
+    keywords: ["seo analyzer", "aeo checker", "geo analyzer", "website analyzer"],
   },
   {
     slug: "url-encoder-decoder",
