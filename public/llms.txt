@@ -1,0 +1,53 @@
+# ToolPilot
+
+> Free online tools for developers, designers, and everyone. All tools run in the browser — no data is ever sent to a server.
+
+## About
+
+ToolPilot is a collection of 24+ free online tools. No sign-up, no ads tracking, no data collection. Everything processes locally in the user's browser using JavaScript.
+
+Website: https://toolpilot.pages.dev
+
+## Tools
+
+### Text Tools
+- [Word Counter](https://toolpilot.pages.dev/tools/word-counter): Count words, characters, sentences, paragraphs, and reading time.
+- [Case Converter](https://toolpilot.pages.dev/tools/case-converter): Convert text to UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case.
+- [Lorem Ipsum Generator](https://toolpilot.pages.dev/tools/lorem-ipsum-generator): Generate placeholder text in paragraphs, sentences, or words.
+- [Emoji & Symbol Picker](https://toolpilot.pages.dev/tools/emoji-picker): Click to copy 700+ emojis, kaomoji, symbols, and special characters.
+
+### Developer Tools
+- [JSON Formatter & Validator](https://toolpilot.pages.dev/tools/json-formatter): Format, beautify, minify, and validate JSON data.
+- [Base64 Encoder & Decoder](https://toolpilot.pages.dev/tools/base64-encoder-decoder): Encode or decode text using Base64 with full Unicode support.
+- [Color Converter](https://toolpilot.pages.dev/tools/color-converter): Convert colors between HEX, RGB, and HSL formats with live preview.
+- [SEO Analyzer](https://toolpilot.pages.dev/tools/seo-analyzer): Check any website's SEO score with 16+ on-page checks. API available at POST /api/analyze.
+- [URL Encoder & Decoder](https://toolpilot.pages.dev/tools/url-encoder-decoder): Percent-encode or decode URLs and query parameters.
+- [Markdown Preview](https://toolpilot.pages.dev/tools/markdown-preview): Write Markdown and see live-rendered HTML preview.
+- [Timestamp Converter](https://toolpilot.pages.dev/tools/timestamp-converter): Convert between Unix timestamps and human-readable dates.
+- [HTML Entity Encoder](https://toolpilot.pages.dev/tools/html-entity-encoder): Encode or decode HTML entities for safe web display.
+- [Regex Tester](https://toolpilot.pages.dev/tools/regex-tester): Test regular expressions with real-time matching and highlighting.
+- [Diff Checker](https://toolpilot.pages.dev/tools/diff-checker): Compare two texts and see differences highlighted line by line.
+- [CSS Gradient Generator](https://toolpilot.pages.dev/tools/css-gradient-generator): Create linear and radial CSS gradients with live preview.
+
+### Converters
+- [Unit Converter](https://toolpilot.pages.dev/tools/unit-converter): Convert between units of length, weight, temperature, area, and volume.
+- [QR Code Generator](https://toolpilot.pages.dev/tools/qr-code-generator): Generate QR codes for URLs, text, and more. Download as PNG.
+- [Image Compressor](https://toolpilot.pages.dev/tools/image-compressor): Compress images to reduce file size while maintaining quality.
+- [JSON to CSV Converter](https://toolpilot.pages.dev/tools/json-to-csv): Convert JSON arrays to CSV format and download as spreadsheet.
+- [Age Calculator](https://toolpilot.pages.dev/tools/age-calculator): Calculate exact age in years, months, days, weeks, and hours.
+- [BMI Calculator](https://toolpilot.pages.dev/tools/bmi-calculator): Calculate Body Mass Index using metric or imperial units.
+
+### Security Tools
+- [Password Generator](https://toolpilot.pages.dev/tools/password-generator): Generate strong random passwords with customizable options.
+- [Hash Generator](https://toolpilot.pages.dev/tools/hash-generator): Generate SHA-1, SHA-256, SHA-384, SHA-512 hashes from text.
+
+## API
+
+SEO Analyzer API is publicly available:
+- Endpoint: POST https://toolpilot.pages.dev/api/analyze
+- Body: {"url": "https://example.com"}
+- Returns: JSON with SEO analysis (title, description, headings, images, links, structured data, etc.)
+
+## Privacy
+
+All client-side tools process data locally in the browser. No user data is collected, stored, or transmitted. See https://toolpilot.pages.dev/privacy for full policy.

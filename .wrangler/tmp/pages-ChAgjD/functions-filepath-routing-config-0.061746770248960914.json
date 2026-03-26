@@ -1,0 +1,21 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/analyze",
+      "mountPath": "/api",
+      "method": "OPTIONS",
+      "module": [
+        "api/analyze.ts:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/api/analyze",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/analyze.ts:onRequestPost"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}
