@@ -1,7 +1,7 @@
 import { locales, type Locale } from "@/lib/i18n/locales";
 import { getTranslation } from "@/lib/i18n";
-import { categories, getToolsByCategory } from "@/lib/tools";
-import ToolCard from "@/components/ToolCard";
+import { categories, getToolsByCategory, tools } from "@/lib/tools";
+import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 
 export function generateStaticParams() {
@@ -28,11 +28,25 @@ export default async function LocaleHomePage({
       <JsonLd
         data={{
           "@context": "https://schema.org",
-          "@type": "WebPage",
+          "@type": "CollectionPage",
           name: t.common.siteTitle,
           description: t.common.siteDescription,
           inLanguage: locale,
           url: `https://toolpilot.pages.dev/${locale}`,
+          mainEntity: {
+            "@type": "ItemList",
+            numberOfItems: tools.length,
+            itemListElement: tools.map((tool, i) => {
+              const tt = t.tools[tool.slug as keyof typeof t.tools];
+              return {
+                "@type": "ListItem",
+                position: i + 1,
+                name: tt?.h1 || tool.name,
+                url: `https://toolpilot.pages.dev/${locale}/tools/${tool.slug}`,
+                description: tt?.description || tool.description,
+              };
+            }),
+          },
         }}
       />
 
@@ -55,9 +69,24 @@ export default async function LocaleHomePage({
               {cat.icon} {catName}
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {catTools.map((tool) => (
-                <ToolCard key={tool.slug} tool={tool} />
-              ))}
+              {catTools.map((tool) => {
+                const tt = t.tools[tool.slug as keyof typeof t.tools];
+                return (
+                  <Link
+                    key={tool.slug}
+                    href={`/${locale}/tools/${tool.slug}`}
+                    className="group rounded-lg border border-gray-200 bg-white p-5 transition-shadow hover:shadow-md"
+                  >
+                    <div className="mb-2 text-2xl">{tool.icon}</div>
+                    <h3 className="mb-1 font-semibold text-gray-900 group-hover:text-blue-600">
+                      {tt?.h1 || tool.name}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {tt?.description || tool.description}
+                    </p>
+                  </Link>
+                );
+              })}
             </div>
           </section>
         );
