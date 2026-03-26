@@ -18,6 +18,20 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://toolpilot.pages.dev"),
+  alternates: {
+    canonical: "https://toolpilot.pages.dev",
+    languages: {
+      en: "https://toolpilot.pages.dev",
+      es: "https://toolpilot.pages.dev/es",
+      pt: "https://toolpilot.pages.dev/pt",
+      ja: "https://toolpilot.pages.dev/ja",
+      ko: "https://toolpilot.pages.dev/ko",
+      zh: "https://toolpilot.pages.dev/zh",
+      id: "https://toolpilot.pages.dev/id",
+      de: "https://toolpilot.pages.dev/de",
+      fr: "https://toolpilot.pages.dev/fr",
+    },
+  },
   title: {
     default: "ToolPilot — Free Online Tools for Everyone",
     template: "%s | ToolPilot",
