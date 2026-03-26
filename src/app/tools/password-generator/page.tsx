@@ -83,7 +83,7 @@ export default function PasswordGeneratorPage() {
           ],
         })}
       />
-      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Text Tools", href: "/#text" }, { label: "Password Generator", href: "/tools/password-generator" }]} />
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Security Tools", href: "/#security" }, { label: "Password Generator", href: "/tools/password-generator" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">Password Generator</h1>
       <p className="mb-6 text-gray-600">
@@ -123,6 +123,8 @@ export default function PasswordGeneratorPage() {
       <AdBanner slot="tool-mid" format="rectangle" />
 
       <section className="mt-8 rounded-lg bg-white p-6 text-sm text-gray-600">
+        <h2 className="mb-2 text-lg font-semibold text-gray-900">What Is a Password Generator?</h2>
+        <p className="mb-3">A password generator is a tool that creates random, cryptographically secure passwords using a combination of uppercase letters, lowercase letters, numbers, and special symbols. It eliminates human bias in password creation.</p>
         <h2 className="mb-2 text-lg font-semibold text-gray-900">Why Use a Password Generator?</h2>
         <p className="mb-3">Humans are bad at creating random passwords. We tend to use predictable patterns, dictionary words, and personal information. A password generator uses cryptographically secure randomness to create passwords that are virtually impossible to guess or brute-force.</p>
         <h3 className="mb-1 font-semibold text-gray-900">Password Security Tips</h3>

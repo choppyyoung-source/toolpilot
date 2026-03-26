@@ -264,8 +264,11 @@ export default function UnitConverterPage() {
 
       <section className="mt-8 rounded-lg bg-white p-6 text-sm text-gray-600">
         <h2 className="mb-2 text-lg font-semibold text-gray-900">
-          Quick Reference: Common Conversions
+          What Is a Unit Converter?
         </h2>
+        <p className="mb-3">
+          A unit converter is a tool that converts measurements between different units of the same quantity. It supports metric and imperial systems for length, weight, temperature, area, and volume.
+        </p>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <h3 className="mb-1 font-semibold text-gray-900">Length</h3>

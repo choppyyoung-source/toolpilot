@@ -75,8 +75,8 @@ export default function AgeCalculatorPage() {
       )}
 
       <section className="mt-8 rounded-lg bg-white p-6 text-sm text-gray-600">
-        <h2 className="mb-2 text-lg font-semibold text-gray-900">How the Age Calculator Works</h2>
-        <p>This calculator computes the exact difference between your date of birth and the current date. It accounts for varying month lengths and leap years to give you a precise result in years, months, days, and other units.</p>
+        <h2 className="mb-2 text-lg font-semibold text-gray-900">What Is an Age Calculator?</h2>
+        <p>An age calculator is a tool that computes the exact difference between a date of birth and the current date. It provides results in years, months, days, weeks, and hours, accounting for varying month lengths and leap years.</p>
       </section>
 
       <FAQ items={[

@@ -236,11 +236,10 @@ export default function ColorConverterPage() {
 
       <section className="mt-8 rounded-lg bg-white p-6 text-sm text-gray-600">
         <h2 className="mb-2 text-lg font-semibold text-gray-900">
-          Understanding Color Formats
+          What Is a Color Converter?
         </h2>
         <p className="mb-3">
-          Colors on the web can be expressed in multiple formats. Each has
-          advantages depending on the context.
+          A color converter is a tool that transforms color values between different formats such as HEX, RGB, and HSL. It is essential for web developers and designers who need to convert colors for CSS, design software, and brand guidelines.
         </p>
         <ul className="list-inside list-disc space-y-1">
           <li>

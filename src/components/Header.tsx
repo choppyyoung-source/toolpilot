@@ -28,6 +28,7 @@ export default function Header() {
             >
               Converters
             </Link>
+            <Link href="/#security" className="text-sm text-gray-600 hover:text-gray-900">Security</Link>
           </nav>
           <LanguageSelector />
         </div>

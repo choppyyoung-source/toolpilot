@@ -188,12 +188,10 @@ export default function EmojiPickerPage() {
 
       <section className="mt-8 rounded-lg bg-white p-6 text-sm text-gray-600">
         <h2 className="mb-2 text-lg font-semibold text-gray-900">
-          How to Use Emojis & Special Characters
+          What Is an Emoji Picker?
         </h2>
         <p className="mb-3">
-          Simply click on any emoji, symbol, or kaomoji to instantly copy it to
-          your clipboard. Then paste it anywhere you want — social media posts,
-          messages, emails, documents, or code.
+          An emoji picker is a tool that displays a searchable collection of emojis, symbols, kaomoji, and special characters. Users can click any character to instantly copy it to their clipboard for use in social media, messages, documents, and code.
         </p>
         <h3 className="mb-1 font-semibold text-gray-900">Categories Available</h3>
         <ul className="list-inside list-disc space-y-1">

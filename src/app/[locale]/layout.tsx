@@ -1,6 +1,7 @@
 import { locales, type Locale } from "@/lib/i18n/locales";
 import { getTranslation } from "@/lib/i18n";
 import type { Metadata } from "next";
+import Script from "next/script";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -28,10 +29,20 @@ export async function generateMetadata({
   };
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  return <>{children}</>;
+  const { locale } = await params;
+  return (
+    <>
+      <Script id="set-lang" strategy="afterInteractive">
+        {`document.documentElement.lang = "${locale}";`}
+      </Script>
+      {children}
+    </>
+  );
 }

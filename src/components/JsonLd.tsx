@@ -37,7 +37,7 @@ export function organizationSchema() {
     "@type": "Organization",
     name: "ToolPilot",
     url: "https://toolpilot.pages.dev",
-    logo: "https://toolpilot.pages.dev/icon.png",
+    logo: "https://toolpilot.pages.dev/icon.svg",
     sameAs: [],
   };
 }
