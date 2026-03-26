@@ -4,7 +4,7 @@ import { useState } from "react";
 import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 function encodeEntities(str: string): string {
@@ -39,6 +39,7 @@ export default function HtmlEntityPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <JsonLd data={webApplicationSchema({ name: "HTML Entity Encoder & Decoder", description: "Free online HTML entity encoder and decoder. Encode special characters for safe HTML display or decode entities back to text.", url: "https://toolpilot.pages.dev/tools/html-entity-encoder", category: "DeveloperApplication", keywords: ["html entity encoder", "html entity decoder", "html encode", "html special characters"] })} />
+      <JsonLd data={howToSchema({ name: "How to encode or decode HTML entities", description: "Encode special characters for safe HTML display or decode HTML entities back to plain text.", steps: [{ name: "Step 1", text: "Choose encode or decode" }, { name: "Step 2", text: "Paste your HTML or entities" }, { name: "Step 3", text: "Click convert and copy the result" }] })} />
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Developer Tools", href: "/#developer" }, { label: "HTML Entity Encoder", href: "/tools/html-entity-encoder" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">HTML Entity Encoder & Decoder</h1>

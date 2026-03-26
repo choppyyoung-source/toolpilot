@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 function diffLines(a: string, b: string): { type: "same" | "add" | "remove"; text: string }[] {
@@ -43,6 +43,7 @@ export default function DiffCheckerPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
       <JsonLd data={webApplicationSchema({ name: "Diff Checker", description: "Free online diff checker. Compare two texts and see the differences highlighted line by line.", url: "https://toolpilot.pages.dev/tools/diff-checker", category: "DeveloperApplication", keywords: ["diff checker", "text compare", "diff tool", "compare text online"] })} />
+      <JsonLd data={howToSchema({ name: "How to compare two texts with a diff checker", description: "Paste two versions of text and see line-by-line differences highlighted in green and red.", steps: [{ name: "Step 1", text: "Paste original text" }, { name: "Step 2", text: "Paste modified text" }, { name: "Step 3", text: "Click Compare to see differences" }] })} />
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Developer Tools", href: "/#developer" }, { label: "Diff Checker", href: "/tools/diff-checker" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">Diff Checker</h1>

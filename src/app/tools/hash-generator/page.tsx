@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 async function hash(algo: string, text: string): Promise<string> {
@@ -34,6 +34,7 @@ export default function HashGeneratorPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <JsonLd data={webApplicationSchema({ name: "Hash Generator", description: "Free online hash generator. Generate SHA-1, SHA-256, SHA-384, SHA-512 hashes from any text.", url: "https://toolpilot.pages.dev/tools/hash-generator", category: "DeveloperApplication", keywords: ["hash generator", "sha256 generator", "sha1 hash", "sha512 online"] })} />
+      <JsonLd data={howToSchema({ name: "How to generate a hash from text", description: "Generate SHA-1, SHA-256, SHA-384, or SHA-512 hashes from any text using the Web Crypto API.", steps: [{ name: "Step 1", text: "Enter text to hash" }, { name: "Step 2", text: "Click Generate Hashes" }, { name: "Step 3", text: "Copy the hash you need" }] })} />
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Security Tools", href: "/#security" }, { label: "Hash Generator", href: "/tools/hash-generator" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">Hash Generator</h1>

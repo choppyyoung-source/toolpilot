@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 export default function RegexTesterPage() {
@@ -51,6 +51,7 @@ export default function RegexTesterPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <JsonLd data={webApplicationSchema({ name: "Regex Tester", description: "Free online regex tester. Test regular expressions with real-time matching, highlighting, and match details.", url: "https://toolpilot.pages.dev/tools/regex-tester", category: "DeveloperApplication", keywords: ["regex tester", "regular expression tester", "regex checker", "regex online"] })} />
+      <JsonLd data={howToSchema({ name: "How to test a regular expression online", description: "Test regex patterns against sample text with live match highlighting and detailed results.", steps: [{ name: "Step 1", text: "Enter a regex pattern" }, { name: "Step 2", text: "Paste test text" }, { name: "Step 3", text: "View highlighted matches and details" }] })} />
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Developer Tools", href: "/#developer" }, { label: "Regex Tester", href: "/tools/regex-tester" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">Regex Tester</h1>

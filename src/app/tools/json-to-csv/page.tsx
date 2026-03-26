@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 function jsonToCsv(json: unknown[]): string {
@@ -45,6 +45,7 @@ export default function JsonToCsvPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
       <JsonLd data={webApplicationSchema({ name: "JSON to CSV Converter", description: "Free online JSON to CSV converter. Convert JSON arrays to CSV format instantly. Download as CSV file.", url: "https://toolpilot.pages.dev/tools/json-to-csv", category: "DeveloperApplication", keywords: ["json to csv", "convert json to csv", "json csv converter", "json to csv online"] })} />
+      <JsonLd data={howToSchema({ name: "How to convert JSON to CSV", description: "Paste a JSON array and instantly convert it to a downloadable CSV file.", steps: [{ name: "Step 1", text: "Paste JSON array" }, { name: "Step 2", text: "Click Convert" }, { name: "Step 3", text: "Copy or download CSV" }] })} />
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Converters", href: "/#converter" }, { label: "JSON to CSV", href: "/tools/json-to-csv" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">JSON to CSV Converter</h1>

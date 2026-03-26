@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 export default function CssGradientPage() {
@@ -18,6 +18,7 @@ export default function CssGradientPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <JsonLd data={webApplicationSchema({ name: "CSS Gradient Generator", description: "Free CSS gradient generator. Create beautiful linear and radial gradients with live preview. Copy CSS code.", url: "https://toolpilot.pages.dev/tools/css-gradient-generator", category: "DesignApplication", keywords: ["css gradient generator", "gradient maker", "css gradient", "linear gradient", "radial gradient"] })} />
+      <JsonLd data={howToSchema({ name: "How to create a CSS gradient", description: "Generate beautiful linear or radial CSS gradients with a live preview and one-click copy.", steps: [{ name: "Step 1", text: "Pick two colors" }, { name: "Step 2", text: "Adjust angle and type" }, { name: "Step 3", text: "Copy the CSS code" }] })} />
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Developer Tools", href: "/#developer" }, { label: "CSS Gradient Generator", href: "/tools/css-gradient-generator" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">CSS Gradient Generator</h1>

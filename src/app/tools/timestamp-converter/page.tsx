@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 const faqs = [
@@ -43,6 +43,7 @@ export default function TimestampConverterPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <JsonLd data={webApplicationSchema({ name: "Timestamp Converter", description: "Free online Unix timestamp converter. Convert between Unix timestamps and human-readable dates.", url: "https://toolpilot.pages.dev/tools/timestamp-converter", category: "DeveloperApplication", keywords: ["timestamp converter", "unix timestamp", "epoch converter", "date to timestamp"] })} />
+      <JsonLd data={howToSchema({ name: "How to convert a Unix timestamp", description: "Convert between Unix timestamps and human-readable dates in seconds or milliseconds.", steps: [{ name: "Step 1", text: "Enter a timestamp or date" }, { name: "Step 2", text: "Click Convert" }, { name: "Step 3", text: "View the result in multiple formats" }] })} />
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Developer Tools", href: "/#developer" }, { label: "Timestamp Converter", href: "/tools/timestamp-converter" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">Unix Timestamp Converter</h1>

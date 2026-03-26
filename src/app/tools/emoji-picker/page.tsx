@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 const emojiCategories = [
@@ -115,6 +115,7 @@ export default function EmojiPickerPage() {
           ],
         })}
       />
+      <JsonLd data={howToSchema({ name: "How to copy an emoji or special character", description: "Browse, search, and copy emojis, symbols, arrows, and kaomoji with a single click.", steps: [{ name: "Step 1", text: "Browse categories or search" }, { name: "Step 2", text: "Click any emoji to copy" }, { name: "Step 3", text: "Paste it anywhere" }] })} />
       <Breadcrumb
         items={[
           { label: "Home", href: "/" },

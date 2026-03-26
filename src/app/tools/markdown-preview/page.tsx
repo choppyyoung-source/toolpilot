@@ -4,7 +4,7 @@ import { useState } from "react";
 import AdBanner from "@/components/AdBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 function parseMarkdown(md: string): string {
@@ -59,6 +59,7 @@ export default function MarkdownPreviewPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
       <JsonLd data={webApplicationSchema({ name: "Markdown Preview", description: "Free online Markdown previewer. Write Markdown and see a live preview instantly. Copy HTML output.", url: "https://toolpilot.pages.dev/tools/markdown-preview", category: "DeveloperApplication", keywords: ["markdown preview", "markdown editor", "markdown to html", "markdown viewer"] })} />
+      <JsonLd data={howToSchema({ name: "How to preview Markdown online", description: "Write Markdown and instantly see a live HTML preview with this free tool.", steps: [{ name: "Step 1", text: "Write Markdown" }, { name: "Step 2", text: "See live preview" }, { name: "Step 3", text: "Copy HTML output" }] })} />
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Developer Tools", href: "/#developer" }, { label: "Markdown Preview", href: "/tools/markdown-preview" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">Markdown Preview</h1>

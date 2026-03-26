@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 interface AnalysisResult {
@@ -239,6 +239,17 @@ export default function SeoAnalyzerPage() {
           url: "https://toolpilot.pages.dev/tools/seo-analyzer",
           category: "DeveloperApplication",
           keywords: ["seo analyzer", "aeo checker", "geo analyzer", "answer engine optimization", "generative engine optimization"],
+        })}
+      />
+      <JsonLd
+        data={howToSchema({
+          name: "How to analyze a website's SEO, AEO, and GEO",
+          description: "Use ToolPilot's free analyzer to check any website's SEO, AEO, and GEO health with 28+ checks.",
+          steps: [
+            { name: "Enter a URL", text: "Type or paste any website URL into the input field." },
+            { name: "Click Analyze", text: "Click the Analyze button to fetch and evaluate the page." },
+            { name: "Review results", text: "View your SEO, AEO, and GEO score with detailed checks and recommendations across all categories." },
+          ],
         })}
       />
       <Breadcrumb

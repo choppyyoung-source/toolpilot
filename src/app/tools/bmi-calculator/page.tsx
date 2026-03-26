@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 function getBmiCategory(bmi: number): { label: string; color: string } {
@@ -39,6 +39,7 @@ export default function BmiCalculatorPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <JsonLd data={webApplicationSchema({ name: "BMI Calculator", description: "Free online BMI calculator. Calculate your Body Mass Index using metric or imperial units. Get instant results with health category.", url: "https://toolpilot.pages.dev/tools/bmi-calculator", category: "UtilityApplication", keywords: ["bmi calculator", "body mass index", "bmi checker", "calculate bmi"] })} />
+      <JsonLd data={howToSchema({ name: "How to calculate your BMI", description: "Enter your height and weight to calculate your Body Mass Index and health category.", steps: [{ name: "Step 1", text: "Enter height and weight" }, { name: "Step 2", text: "Choose metric or imperial" }, { name: "Step 3", text: "Click Calculate to see your BMI" }] })} />
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Converters", href: "/#converter" }, { label: "BMI Calculator", href: "/tools/bmi-calculator" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">BMI Calculator</h1>

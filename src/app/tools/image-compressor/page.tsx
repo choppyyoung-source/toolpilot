@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 function formatSize(bytes: number): string {
@@ -60,6 +60,7 @@ export default function ImageCompressorPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <JsonLd data={webApplicationSchema({ name: "Image Compressor", description: "Free online image compressor. Reduce image file size while maintaining quality. Supports JPEG and PNG.", url: "https://toolpilot.pages.dev/tools/image-compressor", category: "DesignApplication", keywords: ["image compressor", "compress image", "reduce image size", "image optimizer"] })} />
+      <JsonLd data={howToSchema({ name: "How to compress an image online", description: "Reduce image file size in your browser — no upload required — with adjustable quality control.", steps: [{ name: "Step 1", text: "Upload an image" }, { name: "Step 2", text: "Adjust quality slider" }, { name: "Step 3", text: "Download compressed image" }] })} />
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Converters", href: "/#converter" }, { label: "Image Compressor", href: "/tools/image-compressor" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">Image Compressor</h1>

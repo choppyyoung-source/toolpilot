@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
-import JsonLd, { webApplicationSchema } from "@/components/JsonLd";
+import JsonLd, { howToSchema, webApplicationSchema } from "@/components/JsonLd";
 import RelatedTools from "@/components/RelatedTools";
 
 function calcAge(birth: Date, now: Date) {
@@ -35,6 +35,7 @@ export default function AgeCalculatorPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <JsonLd data={webApplicationSchema({ name: "Age Calculator", description: "Free online age calculator. Calculate your exact age in years, months, days, weeks, and hours from your date of birth.", url: "https://toolpilot.pages.dev/tools/age-calculator", category: "UtilityApplication", keywords: ["age calculator", "calculate age", "how old am i", "date of birth calculator"] })} />
+      <JsonLd data={howToSchema({ name: "How to calculate your exact age", description: "Enter your date of birth and get your precise age in years, months, days, weeks, and hours.", steps: [{ name: "Step 1", text: "Enter your date of birth" }, { name: "Step 2", text: "Click Calculate" }, { name: "Step 3", text: "View your exact age in multiple units" }] })} />
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Converters", href: "/#converter" }, { label: "Age Calculator", href: "/tools/age-calculator" }]} />
 
       <h1 className="mb-2 text-3xl font-bold">Age Calculator</h1>
